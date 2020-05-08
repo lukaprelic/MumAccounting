@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Flask React</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <script type="text/javascript" src="static/js/js.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Kupic Kota</h1>
+    <br>
+    <div id="content"></div>
+</div>
+<h3>Input:</h3>
+<form id="runCalcForm" class="col formm">
+    <div class="row"><label for="calcResult">Result:</label>
+        <input type="number" id="calcResult" name="calcResult" value=1133.32></div>
+    <div class="row"><label for="krouns">Kc:</label>
+        <input type="number" id="krouns" name="krouns" value=17539></div>
+    <div class="row"><label for="xExchangeRate">xExchangeRate:</label>
+        <input type="number" id="xExchangeRate" name=xExchangeRate value=27.00></div>
+    <div class="row"><label for="yApproximate">yApproximate:</label>
+        <input type="number" id="yApproximate" name=yApproximate value=7737></div>
+    <div class="row"><label for="zApproximate">zApproximate:</label>
+        <input type="number" id="zApproximate" name=zApproximate value=5330></div>
+    <div class="row"><label for="xincrement">x increment:</label>
+        <input type="number" id="xincrement" name="xincrement" value=0.01></div>
+    <div class="row"><label for="yincrement">y increment:</label>
+        <input type="number" id="yincrement" name="yincrement" value=1></div>
+    <div class="row"><label for="zincrement">z increment:</label>
+        <input type="number" id="zincrement" name="zincrement" value=1></div>
+    <div class="row"><label for="xdiviation">x diviation:</label>
+        <input type="number" id="xdiviation" name="xdiviation" value=0.1></div>
+    <div class="row"><label for="ydiviation">y diviation:</label>
+        <input type="number" id="ydiviation" name="ydiviation" value=10></div>
+    <div class="row"><label for="zdiviation">z diviation:</label>
+        <input type="number" id="zdiviation" name="zdiviation" value=10></div>
+    <div><input style="width:100%" type="button" onclick="runcalc()" value="Run Calculation"></div>
+</form>
+<h3>Equation:</h3>
+<div id="equation table">
+    <div class="row">
+        <div class="cell" id="krounseq"></div>
+        <div class="cell thin"></div>
+        <div class="cell" id="yApproximateeq"></div>
+        <div class="cell thin"></div>
+        <div class="cell" id="zApproximateeq"></div>
+        <div class="cell thin"></div>
+        <div class="cell"></div>
+    </div>
+    <div class="row">
+        <div class="cell">
+            <hr>
+        </div>
+        <div class="cell thin">+</div>
+        <div class="cell">
+            <hr>
+        </div>
+        <div class="cell thin">+</div>
+        <div class="cell">
+            <hr>
+        </div>
+        <div class="cell thin">=</div>
+        <div class="cell" id="calcResulteq"></div>
+    </div>
+    <div class="row">
+        <div class="cell" id="xExchangeRateeqAprox"></div>
+        <div class="cell thin"></div>
+        <div class="cell" id="xExchangeRateeq1"></div>
+        <div class="cell thin"></div>
+        <div class="cell" id="xExchangeRateeq2"></div>
+        <div class="cell thin"></div>
+        <div class="cell"></div>
+    </div>
+
+</div>
+<h3>Log Output:</h3>
+<div id="result"></div>
+<!-- scripts -->
+</body>
+</html>

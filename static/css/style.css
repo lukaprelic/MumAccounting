@@ -1,0 +1,54 @@
+/* custom styles */
+.col label{
+    width:60%;
+display: table-cell;
+}
+.col input{
+    width:60%;
+}
+
+.formm{
+    width:15em;
+}
+
+.row{
+    width:100%;
+    display:flex;
+}
+#result{
+    width:100%;
+    max-height: 80vh;
+    display:flex;
+    overflow-y: scroll;
+}
+
+.table
+{
+    display:  table;
+    width:auto;
+    background-color:#eee;
+    border:1px solid  #666666;
+    border-spacing:5px;/*cellspacing:poor IE support for  this*/
+   /* border-collapse:separate;*/
+}
+
+.row
+{
+   display:table-row;
+   width:auto;
+}
+
+.cell
+{
+    float:left;/*fix for  buggy browsers*/
+    display:table-column;
+    min-width:4em;
+    min-height:20px;
+    /*border:1px solid black;*/
+    text-align: center;
+}
+.cell.thin
+{
+    min-width:1em;
+}
+}
