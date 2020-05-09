@@ -1,14 +1,21 @@
 /* custom styles */
+html {
+    font-size: 1rem; /* or 62.5% or whatever you like, it doesn't matter, it's just a browser fix, however "rem" units will be based on that value, so make it confortable for calculations */
+}
+
 .col label{
     width:60%;
 display: table-cell;
+font-size: 1rem;
 }
 .col input{
     width:70%;
+    font-size: 0.8rem;
 }
 
 .formm{
     width:15em;
+    height:inherit;
 }
 
 .row{
@@ -17,7 +24,8 @@ display: table-cell;
 }
 #result{
     width:100%;
-    max-height: 80vh;
+    max-height: 28vh;
+    max-width: 90vw;
     display:flex;
     overflow-y: scroll;
 }
@@ -52,8 +60,35 @@ display: table-cell;
     min-width:1em;
 }
 #inputandcat{
-display:flex;}
+display:inline-flex;
+/*max-height:20vh;*/
+height:16rem;
+}
+#cat{
+  display: block;
+  width: auto;
+max-height: 100%;
+}
+#catparent{
+  display: block;
+  width: auto;
+  height: auto;
+}
+}
 #cat:hover {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+  height:100%;
 }
+
+#cat:hover {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  height:100%;
+}
+body {
+max-height:100vh;
+zoom:2
+}
+
+}*/

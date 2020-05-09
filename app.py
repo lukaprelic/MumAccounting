@@ -1,8 +1,14 @@
-from flask import Flask, render_template, request, jsonify
+from concurrent.futures.thread import ThreadPoolExecutor
 
+from flask import Flask, render_template, request, jsonify
+from pyfladesk import init_gui
+from win32api import GetSystemMetrics
 import calc
+import ctypes
 
 app = Flask(__name__, static_url_path='/static')
+executor = ThreadPoolExecutor(1)
+future = None
 
 
 @app.route('/')
@@ -11,7 +17,8 @@ def index():
 
 
 @app.route('/runCalc', methods=['POST'])
-def hello():
+def runCalc():
+    global future
     result = request.form.get('calcResult', type=float)
     krouns = request.form.get('krouns', type=int)
     xExchangeRate = request.form.get('xExchangeRate', type=float)
@@ -23,13 +30,33 @@ def hello():
     xdiviation = request.form.get('xdiviation', type=float)
     ydiviation = request.form.get('ydiviation', type=int)
     zdiviation = request.form.get('zdiviation', type=int)
-    output = calc.execCalc(result, krouns, xExchangeRate,
-                  yApproximate, zApproximate,
-                  xincrement, yincrement, zincrement,
-                  xdiviation, ydiviation, zdiviation)
-    data = {'result': output}
+    print('\nfuture start:',future,'\n')
+    future = executor.submit(calc.execCalc, result, krouns, xExchangeRate,
+                             yApproximate, zApproximate,
+                             xincrement, yincrement, zincrement,
+                             xdiviation, ydiviation, zdiviation)
+    # output = calc.execCalc(result, krouns, xExchangeRate,
+    #                      yApproximate, zApproximate,
+    #                      xincrement, yincrement, zincrement,
+    #                      xdiviation, ydiviation, zdiviation)
+    data = {'result': 'Running'}
+    print('\nfuture emd:',str(future),'\n')
     return jsonify(data)
+
+
+@app.route('/calcStatus', methods=['GET'])
+def calcStatus():
+    global future
+    print('\nfuture:',future is None,future,'\n')
+    status = 'Nothing' if (future is None) else future.running()
+
+    return jsonify(status=status,output=calc.output)
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+# ctypes.windll.shcore.SetProcessDpiAwareness(2)
+# width = (GetSystemMetrics(0) * 0.8)
+# height = (GetSystemMetrics(1) * 0.8)
+# init_gui(app, width=width, height=height, window_title="PyFladesk", icon="appicon.png")
+#

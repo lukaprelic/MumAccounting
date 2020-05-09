@@ -1,27 +1,43 @@
+const sleep = ms => new Promise(res => setTimeout(res, ms));
+async function checkcalc(){
+    let isRunning = null
+    console.log('befo running',isRunning)
+    do{
+        await sleep(1000)
+        fetch("/calcStatus", {
+            method: 'get'
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('checking', data);
+            isRunning = data.status
+            document.getElementById("resulttext").innerHTML = data.output;
+            return data.status;})
+        }while(isRunning ==null || isRunning);
+    console.log('calc done');
+}
 function runcalc() {
     var url = "/runCalc"
     const data = new URLSearchParams();
     for (const pair of new FormData(document.getElementById("runCalcForm"))) {
         data.append(pair[0], pair[1]);
     }
-    fetch(url, {
+    promise = fetch(url, {
         method: 'post',
         body: data,
     })
-    .then(response => {
-        console.log(response);
+    checkcalc()
+    promise.then(response => {
+        console.log('calc response',response);
         return response.json();})
     .then(response => {
-    var element = document.createElement("div");
-    element.setAttribute("id", "resulttext");
-    document.getElementById("result").appendChild(element);
     return response;})
     .then(data =>
     {
         var r = data;
         document.getElementById("resulttext").innerHTML = r.result;
-        console.log(r);
-        console.log(r.result);
+        console.log('calc response 2nd',r);
+        console.log('calc response 2nd',r.result);
         return;
     });
 
