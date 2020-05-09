@@ -3,7 +3,7 @@ async function checkcalc(){
     let isRunning = null
     console.log('befo running',isRunning)
     do{
-        await sleep(1000)
+        await sleep(500)
         fetch("/calcStatus", {
             method: 'get'
         })
@@ -12,6 +12,11 @@ async function checkcalc(){
             console.log('checking', data);
             isRunning = data.status
             document.getElementById("resulttext").innerHTML = data.output;
+
+            document.getElementById("combinations").innerHTML = data.combinations;
+            document.getElementById("correctValuescount").innerHTML = data.correctValuesCount;
+            console.log(document.getElementById("resulttext").scrollTop, document.getElementById("resulttext").scrollHeight-111)
+            document.getElementById("resulttext").scrollTop = document.getElementById("resulttext").scrollHeight-111;
             return data.status;})
         }while(isRunning ==null || isRunning);
     console.log('calc done');

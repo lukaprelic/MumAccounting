@@ -5,6 +5,7 @@ output = ""
 getcontext().rounding = ROUND_05UP
 
 roundd = lambda f: Decimal(f).quantize(Decimal('.001'), rounding=ROUND_HALF_UP)
+combinations = 0
 correctValues = []
 
 
@@ -12,10 +13,12 @@ def execCalc(expectedResult, krouns, xExchangeRate,
              yApproximate, zApproximate,
              exchangeIncrement, yIncrement, zIncrement,
              exchangeDiviation, yDiviation, zDiviation):
-
     global output
     output = ""
+    global combinations
+    global correctValues
     combinations = 0
+    correctValues = []
     value = ('NO VALUE FOUND', 'NO VALUE FOUND', 'NO VALUE FOUND')
     expectedResult = roundd(expectedResult)
     xExchangeRate = roundd(xExchangeRate)
@@ -46,9 +49,11 @@ def execCalc(expectedResult, krouns, xExchangeRate,
                 resultDiff = abs(expectedResult - result)
 
                 if resultDiff <= lastResultDiff:
-                    printAndOuput("x=", xPossible, " y=", yPossible, " z=", zPossible, "result=", result, "diff=", resultDiff,
-                          " diff", resultDiff, "<", lastResultDiff, " result=", result, "lastresult=", lastResult,
-                          "curr diff=", resultDiff)
+                    printAndOuput("x=", xPossible, " y=", yPossible, " z=", zPossible, "result=", result, "diff=",
+                                  resultDiff,
+                                  " diff", resultDiff, "<", lastResultDiff, " result=", result, "lastresult=",
+                                  lastResult,
+                                  "curr diff=", resultDiff)
                     value = xPossible, yPossible, zPossible
                     lastResult = result
                     lastResultDiff = resultDiff
@@ -62,9 +67,9 @@ def execCalc(expectedResult, krouns, xExchangeRate,
             yPossible += yIncrement
 
         xPossible += exchangeIncrement
-    printAndOuput("-------- combinations", combinations, "possiblities=", len(correctValues))
-    for val in correctValues:
-        printAndOuput("x=", val[0], " y=", val[1], " z=", val[2], "result=", lastResult, "diff=", lastResultDiff)
+    printAndOuput("Run Completed -------- combinations", combinations, "possiblities=", len(correctValues))
+    #for val in correctValues:
+    #    printAndOuput("x=", val[0], " y=", val[1], " z=", val[2], "result=", lastResult, "diff=", lastResultDiff)
     return output
 
 
@@ -79,8 +84,7 @@ def printAndOuput(*string):
     global output
     line = ""
     for strr in string:
-        line += str(strr) +" "
+        line += str(strr) + " "
     print(line)
     line += "<br/>"
     output += line
-

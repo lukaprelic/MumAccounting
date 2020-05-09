@@ -30,7 +30,6 @@ def runCalc():
     xdiviation = request.form.get('xdiviation', type=float)
     ydiviation = request.form.get('ydiviation', type=int)
     zdiviation = request.form.get('zdiviation', type=int)
-    print('\nfuture start:',future,'\n')
     future = executor.submit(calc.execCalc, result, krouns, xExchangeRate,
                              yApproximate, zApproximate,
                              xincrement, yincrement, zincrement,
@@ -40,17 +39,15 @@ def runCalc():
     #                      xincrement, yincrement, zincrement,
     #                      xdiviation, ydiviation, zdiviation)
     data = {'result': 'Running'}
-    print('\nfuture emd:',str(future),'\n')
     return jsonify(data)
 
 
 @app.route('/calcStatus', methods=['GET'])
 def calcStatus():
     global future
-    print('\nfuture:',future is None,future,'\n')
     status = 'Nothing' if (future is None) else future.running()
 
-    return jsonify(status=status,output=calc.output)
+    return jsonify(status=status,output=calc.output,combinations=calc.combinations,correctValuesCount=len(calc.correctValues))
 
 
 if __name__ == '__main__':
