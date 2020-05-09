@@ -1,18 +1,16 @@
 from decimal import *
 
 output = ""
-# getcontext().prec = 10
 getcontext().rounding = ROUND_05UP
-
 roundd = lambda f: Decimal(f).quantize(Decimal('.001'), rounding=ROUND_HALF_UP)
 combinations = 0
 correctValues = []
 
 
-def execCalc(expectedResult, krouns, xExchangeRate,
-             yApproximate, zApproximate,
+def execCalc(expectedResult, krouns, ExchangeRate,
+             xApproximate,yApproximate, zApproximate,
              exchangeIncrement, yIncrement, zIncrement,
-             exchangeDiviation, yDiviation, zDiviation):
+             exchangeDiviation, yDiviation, zDiviation,equalstolerance):
     global output
     output = ""
     global combinations
@@ -21,12 +19,13 @@ def execCalc(expectedResult, krouns, xExchangeRate,
     correctValues = []
     value = ('NO VALUE FOUND', 'NO VALUE FOUND', 'NO VALUE FOUND')
     expectedResult = roundd(expectedResult)
-    xExchangeRate = roundd(xExchangeRate)
+    xExchangeRate = roundd(ExchangeRate)
+    xApproximate = roundd(xApproximate)
     exchangeDiviation = roundd(exchangeDiviation)
     exchangeIncrement = roundd(exchangeIncrement)
     krouns = krouns
-    exchangeLowerBound = roundd(xExchangeRate - exchangeDiviation)
-    exchangeUpperBound = roundd(xExchangeRate + exchangeDiviation)
+    exchangeLowerBound = roundd(xApproximate - exchangeDiviation)
+    exchangeUpperBound = roundd(xApproximate + exchangeDiviation)
     xPossible = roundd(exchangeLowerBound)
 
     yLowerBound = yApproximate - yDiviation
@@ -54,21 +53,23 @@ def execCalc(expectedResult, krouns, xExchangeRate,
                                   " diff", resultDiff, "<", lastResultDiff, " result=", result, "lastresult=",
                                   lastResult,
                                   "curr diff=", resultDiff)
-                    value = xPossible, yPossible, zPossible
                     lastResult = result
                     lastResultDiff = resultDiff
-                    if resultDiff < 0.005:
-                        printAndOuput("!!!!x=", xPossible, " y=", yPossible, " z=", zPossible, "result=", result, "diff=",
-                              resultDiff,
-                              " diff", resultDiff, "<", lastResultDiff, " result=", result, "lastresult=", lastResult,
-                              "curr diff=", resultDiff)
+                    value = {'x': str(xPossible), 'y': yPossible, 'z': zPossible,'diff':str(resultDiff)}
+                    if resultDiff < equalstolerance:
+                        printAndOuput("!!!!x=", xPossible, " y=", yPossible, " z=", zPossible, "result=", result,
+                                      "diff=",
+                                      resultDiff,
+                                      " diff", resultDiff, "<", lastResultDiff, " result=", result, "lastresult=",
+                                      lastResult,
+                                      "curr diff=", resultDiff)
                         correctValues.append(value)
                 zPossible += zIncrement
             yPossible += yIncrement
 
         xPossible += exchangeIncrement
     printAndOuput("Run Completed -------- combinations", combinations, "possiblities=", len(correctValues))
-    #for val in correctValues:
+    # for val in correctValues:
     #    printAndOuput("x=", val[0], " y=", val[1], " z=", val[2], "result=", lastResult, "diff=", lastResultDiff)
     return output
 

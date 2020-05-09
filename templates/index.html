@@ -18,8 +18,10 @@
                 <input type="number" id="calcResult" name="calcResult" value=1133.32></div>
             <div class="row"><label for="krouns">Kc:</label>
                 <input type="number" id="krouns" name="krouns" value=17539></div>
-            <div class="row"><label for="xExchangeRate">xExchangeRate:</label>
-                <input type="number" id="xExchangeRate" name=xExchangeRate value=27.10 step=0.01></div>
+            <div class="row"><label for="ExchangeRate">ExchangeRate:</label>
+                <input type="number" id="ExchangeRate" name=ExchangeRate value=27.10 step=0.01></div>
+            <div class="row"><label for="xApproximate">xApproximate:</label>
+                <input type="number" id="xApproximate" name=xApproximate value=27.00 step=0.01></div>
             <div class="row"><label for="yApproximate">yApproximate:</label>
                 <input type="number" id="yApproximate" name=yApproximate value=7737></div>
             <div class="row"><label for="zApproximate">zApproximate:</label>
@@ -36,6 +38,8 @@
                 <input type="number" id="ydiviation" name="ydiviation" value=200></div>
             <div class="row"><label for="zdiviation">z diviation:</label>
                 <input type="number" id="zdiviation" name="zdiviation" value=200></div>
+            <div class="row"><label for="equalstolerance">equals tolerance:</label>
+                <input type="number" id="equalstolerance" name="equalstolerance" value=0.005 step=0.001></div>
             <div><input style="width:100%" type="button" onclick="runcalc()" value="Run Calculation"></div>
         </form>
         <img id="cat" src="static/cat.png" alt="Smiley face">
@@ -70,11 +74,11 @@
             <div class="cell" id="calcResulteq"></div>
         </div>
         <div class="row">
-            <div class="cell" id="xExchangeRateeqAprox"></div>
+            <div class="cell" id="xApproximateeq"></div>
             <div class="cell thin"></div>
-            <div class="cell" id="xExchangeRateeq1"></div>
+            <div class="cell" id="ExchangeRateeq1"></div>
             <div class="cell thin"></div>
-            <div class="cell" id="xExchangeRateeq2"></div>
+            <div class="cell" id="ExchangeRateeq2"></div>
             <div class="cell thin"></div>
             <div class="cell"></div>
         </div>
