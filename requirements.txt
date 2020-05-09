@@ -1,3 +1,4 @@
 Flask==1.1.2
 pyfladesk==1.1
 pywin32~=227
+pyinstaller==3.6

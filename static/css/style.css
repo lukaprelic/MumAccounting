@@ -4,6 +4,7 @@ html {
 }
 h3{
     margin: 0.5rem 0rem 0rem 0rem;
+    font-size: 1rem;
 }
 .first{
 max-height:72vh
@@ -11,11 +12,11 @@ max-height:72vh
 .col label{
     width:60%;
 display: table-cell;
-font-size: 1rem;
+font-size: 0.9rem;
 }
 .col input{
     width:70%;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 .formm{
@@ -29,7 +30,7 @@ font-size: 1rem;
 }
 #resulttext{
     width:100%;
-    height: 8vh;
+    height: 6.5vh;
     border: 2px solid black;
     max-width: 90vw;
     display:flex;
@@ -75,7 +76,7 @@ font-size: 1rem;
 #inputandcat{
 display:inline-flex;
 /*max-height:20vh;*/
-height:18rem;
+height:35.8rem;
 }
 #cat{
   display: block;

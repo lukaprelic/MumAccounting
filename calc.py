@@ -86,6 +86,6 @@ def printAndOuput(*string):
     line = ""
     for strr in string:
         line += str(strr) + " "
-    print(line)
+    #print(line)
     line += "<br/>"
     output += line
