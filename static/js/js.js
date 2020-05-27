@@ -16,7 +16,7 @@ function drawCorrectValues(){
         x.innerHTML = 'x='+value['x'];
         y.innerHTML = 'y='+value['y'];
         z.innerHTML = 'z='+value['z'];
-        z.innerHTML = 'diff='+value['diff'];
+        diff.innerHTML = 'diff='+value['diff'];
         row.appendChild(x)
         row.appendChild(y)
         row.appendChild(z)
