@@ -75,9 +75,9 @@ def execCalc(expectedResult, krouns, ExchangeRate,
 
 
 def runCalc(xthis, ythis, zthis, krouns, exchangeRate):
-    result = roundd(krouns / roundd(xthis)) + \
-             roundd(ythis / roundd(exchangeRate)) + \
-             roundd(zthis / roundd(exchangeRate))
+    result = Decimal(roundd(krouns / roundd(xthis))).quantize(Decimal('.01'), rounding=ROUND_HALF_UP) + \
+             Decimal(roundd(ythis / roundd(exchangeRate))).quantize(Decimal('.01'), rounding=ROUND_HALF_UP) + \
+             Decimal(roundd(zthis / roundd(exchangeRate))).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
     return result
 
 

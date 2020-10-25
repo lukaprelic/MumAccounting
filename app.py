@@ -65,5 +65,5 @@ if __name__ == '__main__':
     # app.run(debug=True)
     ctypes.windll.shcore.SetProcessDpiAwareness(2)
     width = (GetSystemMetrics(0) * 0.8)
-    height = (GetSystemMetrics(1) * 0.8)
+    height = (GetSystemMetrics(1) * 0.83)
     init_gui(app, width=width, height=height, window_title="PyFladesk", icon="static/favicon.png")
