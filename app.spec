@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['app.py'],
-             pathex=['C:\\Users\\lukap\\Downloads\\MumAccounting'],
+             pathex=['C:\\Users\\lukap\\Downloads\\MumAccounting - Copy'],
              binaries=[],
              datas=[('templates', 'templates'), ('static', 'static')],
              hiddenimports=[],

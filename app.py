@@ -7,7 +7,6 @@ from pyfladesk import init_gui
 from win32api import GetSystemMetrics
 import calc
 import ctypes
-import pkg_resources.py2_warn
 
 
 def resource_path(relative_path):

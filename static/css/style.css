@@ -63,7 +63,15 @@ font-size: 0.9rem;
    display:table-row;
    width:auto;
 }
-
+.equaltiontable .cell
+{
+    float:left;/*fix for  buggy browsers*/
+    display:table-column;
+    min-width:5.5em;
+    min-height:20px;
+    /*border:1px solid black;*/
+    text-align: center;
+}
 .cell
 {
     float:left;/*fix for  buggy browsers*/
@@ -80,12 +88,13 @@ font-size: 0.9rem;
 #inputandcat{
 display:inline-flex;
 /*max-height:20vh;*/
-height:36.5rem;
+height:18rem;
 }
 #cat{
   display: block;
   width: auto;
 max-height: 100%;
+
 }
 #catparent{
   display: block;
@@ -106,7 +115,6 @@ max-height: 100%;
 }
 #logstats{
     display:inline-flex;
-    margin-top: 2rem;
 }
 #logstats div{
     display:inline-flex;

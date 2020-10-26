@@ -73,6 +73,8 @@ function updateeq(event) {
         input = document.getElementById(val.id+"eq");
         if(input !=null)
             input.innerHTML = val.value;
+        if(val.id.includes("krouns"))
+            input.innerHTML = "(Kc) "+val.value;
         if(val.id.includes("Approximate")){
                     input.innerHTML = "("+val.id[0]+") ~"+val.value;
         }
