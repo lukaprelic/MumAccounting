@@ -1,5 +1,4 @@
 Flask==1.1.2
-pyfladesk==1.1
+pysideflask==2.0
 pywin32==227
-pyinstaller==3.6
-setuptools<45.0.0
+pyinstaller==4.4

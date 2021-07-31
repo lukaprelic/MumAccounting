@@ -1,14 +1,16 @@
 # -*- mode: python ; coding: utf-8 -*-
 
+
 block_cipher = None
 
 
 a = Analysis(['app.py'],
-             pathex=['C:\\Users\\lukap\\Downloads\\MumAccounting - Copy'],
+             pathex=['C:\\Program Files (x86)\\Windows Kits\\10\\Redist\\10.0.19041.0\\ucrt\\DLLs\\x64', 'C:\\Users\\lukap\\Downloads\\MumAccounting'],
              binaries=[],
              datas=[('templates', 'templates'), ('static', 'static')],
              hiddenimports=[],
              hookspath=[],
+             hooksconfig={},
              runtime_hooks=[],
              excludes=[],
              win_no_prefer_redirects=False,
@@ -17,11 +19,12 @@ a = Analysis(['app.py'],
              noarchive=False)
 pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
+
 exe = EXE(pyz,
           a.scripts,
           a.binaries,
           a.zipfiles,
-          a.datas,
+          a.datas,  
           [],
           name='app',
           debug=False,
@@ -30,4 +33,8 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False )
+          console=False,
+          disable_windowed_traceback=False,
+          target_arch=None,
+          codesign_identity=None,
+          entitlements_file=None )
