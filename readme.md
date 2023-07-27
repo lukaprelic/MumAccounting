@@ -1,3 +1,6 @@
+pip install -r requirements.txt
+pip uninstall flask
+pip install flask
 #build spec file
 pyinstaller -w -F --add-data "templates;templates" --add-data "static;static" app.py --path 'C:\Program Files (x86)\Windows Kits\10\Redist\10.0.19041.0\ucrt\DLLs\x64'
 

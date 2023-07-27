@@ -1,7 +1,7 @@
 from decimal import *
 
 output = ""
-getcontext().rounding = ROUND_05UP
+getcontext().rounding = ROUND_HALF_UP
 roundd = lambda f: Decimal(f).quantize(Decimal('.001'), rounding=ROUND_HALF_UP)
 combinations = 0
 correctValues = []
@@ -48,11 +48,11 @@ def execCalc(expectedResult, krouns, ExchangeRate,
                 resultDiff = abs(expectedResult - result)
 
                 if resultDiff <= lastResultDiff:
-                    printAndOuput("x=", xPossible, " y=", yPossible, " z=", zPossible, "result=", result, "diff=",
-                                  resultDiff,
-                                  " diff", resultDiff, "<", lastResultDiff, " result=", result, "lastresult=",
-                                  lastResult,
-                                  "curr diff=", resultDiff)
+#                    printAndOuput("x=", xPossible, " y=", yPossible, " z=", zPossible, "result=", result, "diff=",
+#                                  resultDiff,
+#                                  " diff", resultDiff, "<", lastResultDiff, " result=", result, "lastresult=",
+#                                  lastResult,
+#                                  "curr diff=", resultDiff)
                     lastResult = result
                     lastResultDiff = resultDiff
                     value = {'x': str(xPossible), 'y': yPossible, 'z': zPossible,'diff':str(resultDiff)}
@@ -75,9 +75,9 @@ def execCalc(expectedResult, krouns, ExchangeRate,
 
 
 def runCalc(xthis, ythis, zthis, krouns, exchangeRate):
-    result = Decimal(roundd(krouns / roundd(xthis))).quantize(Decimal('.01'), rounding=ROUND_HALF_UP) + \
-             Decimal(roundd(ythis / roundd(exchangeRate))).quantize(Decimal('.01'), rounding=ROUND_HALF_UP) + \
-             Decimal(roundd(zthis / roundd(exchangeRate))).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
+    result = Decimal(krouns / roundd(xthis)).quantize(Decimal('.01'), rounding=ROUND_HALF_UP) + \
+             Decimal(ythis / roundd(exchangeRate)).quantize(Decimal('.01'), rounding=ROUND_HALF_UP) + \
+             Decimal(zthis / roundd(exchangeRate)).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
     return result
 
 
